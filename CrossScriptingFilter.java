@@ -29,6 +29,7 @@ public class CrossScriptingFilter implements Filter {
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
+		system.out.println(development-1.0);
 		
 	}
 	
