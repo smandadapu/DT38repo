@@ -45,7 +45,7 @@ public class XSSRequestWrapper extends HttpServletRequestWrapper {
         int count = values.length;
         String[] encodedValues = new String[count];
         for (int i = 0; i < count; i++) {
-        	if(!ESAPI.validator().isValidInput( "xss", values[i], "HTTPParameterValue", 256, false)){
+        	if(!ESAPI.validator().isValidInput( "xss", values[i], "HTTPParameterValue", 512, false)){
             	encodedValues[i] = Base64.encodeBase64URLSafeString(values[i].getBytes());
             }
             encodedValues[i] = stripXSS(values[i]);
@@ -59,7 +59,7 @@ public class XSSRequestWrapper extends HttpServletRequestWrapper {
     public String getParameter(String parameter) {
         String value = super.getParameter(parameter);
         if(value != null){
-        	if(!ESAPI.validator().isValidInput( "xss", value, "HTTPParameterValue", 2000, false)){
+        	if(!ESAPI.validator().isValidInput( "xss", value, "HTTPParameterValue", 1000, false)){
             	value = Base64.encodeBase64URLSafeString(value.getBytes());
             }
         }
