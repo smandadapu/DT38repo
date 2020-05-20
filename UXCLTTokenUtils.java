@@ -28,9 +28,9 @@ public class UXCLTTokenUtils {
 		signatureBuilder.append(UXCLTTokenUtils.MAGIC_KEY);
 		MessageDigest digest;
 		try {
-			digest = MessageDigest.getInstance("MD5");
+			digest = MessageDigest.getInstance("sha");
 		} catch (NoSuchAlgorithmException e) {
-			throw new IllegalStateException("No MD5 algorithm available!");
+			throw new IllegalStateException("No sha algorithm available!");
 		}
 		return new String(Hex.encodeHexString(digest.digest(signatureBuilder.toString().getBytes())));
 	}
